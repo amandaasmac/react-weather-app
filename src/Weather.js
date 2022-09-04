@@ -19,7 +19,7 @@ export default function Weather(props) {
       feelsLike: response.data.main.feels_like,
       humidity: response.data.main.humidity,
       windSpeed: response.data.wind.speed,
-      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].id,
       date: new Date(response.data.dt * 1000),
     });
   }
