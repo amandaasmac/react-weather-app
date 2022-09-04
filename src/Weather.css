@@ -1,0 +1,165 @@
+.Weather h1 {
+  font-size: 2.3rem;
+}
+
+.Weather h2 {
+  font-size: 2.5rem;
+}
+
+.Weather .app-container {
+  position: relative;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(235, 241, 255, 0.4);
+  padding: 60px 15px 30px;
+  margin: 30px auto 5px;
+  border-radius: 15px;
+  max-width: 560px;
+}
+
+.Weather header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Weather .unit-switch {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.Weather .search-form {
+  width: 100%;
+  max-width: 500px;
+  align-self: center;
+  display: flex;
+  margin-block-end: 7px;
+}
+
+.Weather .search-input {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 10px;
+  color: var(--melon);
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: var(--ghost-white);
+  background-clip: padding-box;
+  border: 1px solid var(--amaranth-pink);
+  border-radius: 12px 0 0 12px;
+}
+
+.Weather .search-input::placeholder {
+  color: var(--amaranth-pink);
+}
+
+.Weather button,
+.Weather input[type="submit"] {
+  transition: all 0.25s ease-in-out;
+}
+
+.Weather button:hover,
+.Weather input[type="submit"]:hover,
+.Weather a:hover {
+  cursor: pointer;
+}
+
+.Weather .search-button {
+  margin-left: -1px;
+  padding: 10px 20px;
+  border-radius: 0 12px 12px 0;
+  font-size: 1.1rem;
+}
+
+.Weather .search-button,
+.Weather .unit-switch {
+  background-color: var(--amaranth-pink);
+  color: white;
+  border: 1px solid var(--amaranth-pink);
+}
+
+.Weather .search-button:hover,
+.Weather .unit-switch:hover {
+  background-color: var(--melon);
+  border-color: var(--melon);
+}
+
+.app-container .use-device-button {
+  font-size: 1rem;
+  width: fit-content;
+  align-self: center;
+  border: none;
+  background: transparent;
+  color: var(--amaranth-pink);
+  text-shadow: 0.2px 0.2px white;
+}
+
+.Weather .use-device-button:hover {
+  color: var(--melon);
+}
+
+@media screen and (min-width: 450px) {
+  .Weather .search-form {
+    padding-inline: 15px;
+  }
+}
+
+.Weather main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column-reverse;
+  padding: 2rem 0 4rem;
+}
+
+.Weather .today-description,
+.Weather .today-min-max {
+  font-size: 1.2rem;
+}
+
+.Weather .today-description:first-letter {
+  text-transform: capitalize;
+}
+
+.Weather .today-min-max,
+.Weather .today-details,
+.Weather .current-dayandtime {
+  margin-block-start: 0.5rem;
+}
+
+.Weather .max-temp {
+  font-weight: 600;
+}
+
+.Weather .today-details,
+.Weather .current-dayandtime {
+  font-size: 0.9rem;
+}
+
+.Weather img {
+  width: 90%;
+}
+
+@media screen and (min-width: 450px) {
+  .Weather .app-container {
+    padding-inline: 30px;
+  }
+
+  .Weather main {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Weather .weather-image {
+    text-align: right;
+  }
+}

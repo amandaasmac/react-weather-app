@@ -1,17 +1,20 @@
 import "./App.css";
+import Weather from "./Weather";
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Weather App</h1>
+      <Weather />
       <footer>
-        Coded by Amanda Machado and is{" "}
-        <a
-          href="https://github.com/amandaasmac/react-weather-app"
-          target="_blank"
-        >
-          open sourced on GitHub
-        </a>
+        <small>
+          <a
+            href="https://github.com/amandaasmac/react-weather-app"
+            target="_blank"
+          >
+            Open source code
+          </a>{" "}
+          by Amanda Machado
+        </small>
       </footer>
     </div>
   );

@@ -1,0 +1,40 @@
+:root {
+  --amaranth-pink: #eda1c1;
+  --melon: #fab2ac;
+  --aero-blue: #bee4d2;
+  --light-cyan: #d7f8f7;
+  --ghost-white: rgb(249, 249, 255);
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  text-shadow: 0.2px 0.2px #c2c2c2;
+  padding: 0 20px;
+  background: rgb(237, 161, 193);
+  background: linear-gradient(
+    121deg,
+    var(--amaranth-pink) 0%,
+    var(--melon) 30%,
+    var(--aero-blue) 85%,
+    var(--light-cyan) 100%
+  );
+  min-height: 100vh;
+}
+
+@media screen and (min-width: 450px) {
+  body {
+    background: radial-gradient(
+      circle at 7.5% 24%,
+      var(--amaranth-pink) 0%,
+      var(--melon) 25.5%,
+      var(--aero-blue) 62.3%,
+      var(--light-cyan) 93.8%
+    );
+  }
+}

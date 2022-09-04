@@ -1,7 +1,10 @@
-.App {
+.App footer {
   text-align: center;
+  color: var(--amaranth-pink);
+  margin-block-end: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.App footer a {
+  color: var(--ghost-white);
+  text-decoration: none;
 }
