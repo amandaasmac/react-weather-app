@@ -7,7 +7,8 @@ export default function WeatherInfo(props) {
     <main className="WeatherInfo">
       <div className="weather-today">
         <h2>
-          <span>{Math.round(props.data.temperature)}</span>˚C
+          {Math.round(props.data.temperature)}
+          {props.data.tempUnit}
         </h2>
         <h1>{props.data.city}</h1>
         <div className="today-description">{props.data.description}</div>
