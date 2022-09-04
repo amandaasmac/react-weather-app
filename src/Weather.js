@@ -19,7 +19,7 @@ export default function Weather(props) {
       feelsLike: response.data.main.feels_like,
       humidity: response.data.main.humidity,
       windSpeed: response.data.wind.speed,
-      iconUrl: `https://aquamarine-praline-279a47.netlify.app/img/800d.png`,
+      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       date: new Date(response.data.dt * 1000),
     });
   }
