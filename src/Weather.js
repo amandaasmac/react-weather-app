@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate";
 import axios from "axios";
 import "./Weather.css";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
-    console.log(response.data);
     setWeatherData({
       ready: true,
       city: response.data.name,
@@ -17,7 +17,7 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       windSpeed: response.data.wind.speed,
       iconUrl: `https://aquamarine-praline-279a47.netlify.app/img/800d.png`,
-      date: `sunday 13:24`,
+      date: new Date(response.data.dt * 1000),
     });
   }
 
@@ -58,7 +58,7 @@ export default function Weather(props) {
                 ˚
               </div>
               <div className="current-dayandtime">
-                Last updated: {weatherData.date}
+                Last updated: <FormattedDate date={weatherData.date} />
               </div>
               <div className="today-details">
                 <div className="today-feelslike">
