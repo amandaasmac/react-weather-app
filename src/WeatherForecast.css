@@ -1,0 +1,35 @@
+.daily-forecast {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  position: relative;
+  border-radius: 15px;
+  transition: all 0.25s ease-in-out;
+}
+
+.daily-forecast:hover {
+  background-color: #fab2ac1a;
+}
+
+.daily-forecast::before {
+  content: "";
+  height: 1px;
+  width: 80%;
+  position: absolute;
+  top: 0;
+  left: 10%;
+  background-color: var(--light-cyan);
+}
+
+.forecast-day {
+  min-width: 92px;
+}
+
+.forecast-max-temp {
+  font-weight: 600;
+}
+
+.daily-forecast img {
+  height: 48px;
+}

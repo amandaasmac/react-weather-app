@@ -144,10 +144,6 @@
   font-size: 0.9rem;
 }
 
-.Weather img {
-  width: 75%;
-}
-
 @media screen and (min-width: 450px) {
   .Weather .app-container {
     padding-inline: 30px;
