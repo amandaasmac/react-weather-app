@@ -6,23 +6,23 @@ import "./Weather.css";
 
 export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
+  const apiKey = "f2a962d48c46d7fc23aca5910b2db6af";
   const [weatherData, setWeatherData] = useState({ ready: false });
 
-  const [units, setUnits] = useState("metric");
-  const [switcherSymbol, setSwitcherSymbol] = useState("˚F");
-  const [tempSymbol, setTempSymbol] = useState("˚C");
+  const [units, setUnits] = useState({
+    system: "metric",
+    buttonSymbol: "˚F",
+    tempSymbol: "˚C",
+  });
 
   function switchUnits() {
-    if (units === "metric") {
-      setUnits("imperial");
-      setSwitcherSymbol("˚C");
-      setTempSymbol("˚F");
+    if (units.system === "metric") {
+      setUnits({ system: "imperial", buttonSymbol: "˚C", tempSymbol: "˚F" });
     } else {
-      setUnits("metric");
-      setSwitcherSymbol("˚F");
-      setTempSymbol("˚C");
+      setUnits({ system: "metric", buttonSymbol: "˚F", tempSymbol: "˚C" });
     }
-    search();
+    console.log(units);
+    search(weatherData.city);
   }
 
   function handleResponse(response) {
@@ -31,7 +31,8 @@ export default function Weather(props) {
       city: response.data.name,
       coordinates: response.data.coord,
       temperature: response.data.main.temp,
-      tempUnit: tempSymbol,
+      tempUnit: units.tempSymbol,
+      units: units.system,
       description: response.data.weather[0].description,
       maxTemp: response.data.main.temp_max,
       minTemp: response.data.main.temp_min,
@@ -44,8 +45,7 @@ export default function Weather(props) {
   }
 
   function search() {
-    const apiKey = "f2a962d48c46d7fc23aca5910b2db6af";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units.system}`;
     axios.get(apiUrl).then(handleResponse);
   }
 
@@ -58,13 +58,25 @@ export default function Weather(props) {
     setCity(event.target.value);
   }
 
+  function searchLocation(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function deviceLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchLocation);
+  }
+
   if (weatherData.ready) {
     return (
       <div className="Weather">
         <div className="app-container">
           <header>
             <button className="unit-switch" onClick={switchUnits}>
-              {switcherSymbol}
+              {units.buttonSymbol}
             </button>
             <form className="search-form" onSubmit={handleSubmit}>
               <input
@@ -76,12 +88,12 @@ export default function Weather(props) {
               />
               <input type="submit" value="Search" className="search-button" />
             </form>
-            <button className="use-device-button">
+            <button className="use-device-button" onClick={deviceLocation}>
               <i className="fa-solid fa-location-dot"></i> Use device location
             </button>
           </header>
           <WeatherInfo data={weatherData} />
-          <WeatherForecast coord={weatherData.coordinates} />
+          <WeatherForecast coord={weatherData} />
         </div>
       </div>
     );
